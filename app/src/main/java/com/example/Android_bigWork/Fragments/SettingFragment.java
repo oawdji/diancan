@@ -53,10 +53,9 @@ public class SettingFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Button button1 = (Button) getActivity().findViewById(R.id.button_user);
-        Button button2 = (Button) getActivity().findViewById(R.id.button_update);
-        TextView  tv1 =(TextView) getActivity().findViewById(R.id.editTextTextPassword_old);
-        TextView  tv2 =(TextView) getActivity().findViewById(R.id.editTextTextPassword_new);
-        TextView  tv3 =(TextView) getActivity().findViewById(R.id.textView5);
+        TextView tv1 = (TextView) getActivity().findViewById(R.id.editTextTextPassword_old);
+        TextView tv2 = (TextView) getActivity().findViewById(R.id.editTextTextPassword_new);
+        TextView tv3 = (TextView) getActivity().findViewById(R.id.textView5);
         tv3.setText(user.username);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,21 +66,13 @@ public class SettingFragment extends Fragment {
                 //获取Person数据库
                 PersonDatabase personDatabase = PersonDatabase.getDatabase(getActivity());
                 PersonDao personDao = personDatabase.getPersonDao();
-                personDao.changePassword(str1,str2, user.username);
+                personDao.changePassword(str1, str2, user.username);
 
                 //修改密码
                 Toast.makeText(getActivity(), "修改成功！", Toast.LENGTH_LONG).show();
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "已是最新版本！", Toast.LENGTH_LONG).show();
-            }
-        });
-        mViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 
